@@ -33,6 +33,6 @@ jobs:
         context: ./docker-hello-world
         push: true
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/hello-world-app:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/hello-world-app:${{ github.sha }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/devops_learning_app:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/devops_learning_app:${{ github.sha }}
         platforms: linux/amd64,linux/arm64
