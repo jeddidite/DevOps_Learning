@@ -8,5 +8,5 @@ COPY index.html /usr/share/nginx/html/
 EXPOSE 80
 
 # nginx starts automatically with the default CMD, so no need to specify one
-# RUN mkdir -p /var/log/app
-# RUN echo "$(date): Container started" > /var/log/app/startup.log
+RUN mkdir -p /var/log/app
+RUN echo "$(date): Container started" > /var/log/app/startup.log
