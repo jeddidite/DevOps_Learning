@@ -7,6 +7,10 @@ docker run hello-world # Runs the hello-world container
 docker images # Lists all images on the local machine
 docker ps # Lists all running containers
 
+# DockerHub website
+# https://hub.docker.com/
+docker login -u jeddidite # Log in to Docker Hub
+
 # Clone New Docker project, build it, and run it
 git clone https://github.com/docker/welcome-to-docker
 cd welcome-to-docker
@@ -20,3 +24,8 @@ touch index.html
 docker build -t hello-world-app .
 docker run -p 8080:80 hello-world-app
 # http://localhost:8080
+
+# Runner the docker I just made on another machine: 
+# On any server, anywhere in the world
+docker pull jeddidite/devops_learning_app:latest
+docker run -d -p 80:80 jeddidite/devops_learning_app:latest
