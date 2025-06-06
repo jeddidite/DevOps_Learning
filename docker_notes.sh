@@ -29,3 +29,10 @@ docker run -p 8080:80 hello-world-app
 # On any server, anywhere in the world
 docker pull jeddidite/devops_learning_app:latest
 docker run -d -p 80:80 jeddidite/devops_learning_app:latest
+
+# Docker Volumes:
+docker volume create db # Create a volume named 'db'
+docker run -v db:/app/data nginx # Run an nginx container with the 'db' volume mounted
+docker run -d -v db:/app/data nginx # Run in detached mode
+docker volume ls # List all volumes
+docker volume inspect db # Inspect the 'db' volume
