@@ -21,6 +21,7 @@ mkdir docker-hello-world
 cd docker-hello-world
 touch Dockerfile
 touch index.html
+cd .\docker-hello-world\ 
 docker build -t hello-world-app .
 docker run -p 8080:80 hello-world-app
 # http://localhost:8080
@@ -29,3 +30,23 @@ docker run -p 8080:80 hello-world-app
 # On any server, anywhere in the world
 docker pull jeddidite/devops_learning_app:latest
 docker run -d -p 80:80 jeddidite/devops_learning_app:latest
+
+#Stopping a container
+docker ps
+docker stop <container_id> # Stops a running container
+
+# Running bind mounts: 
+# BInd mounts let you mount a local file to your virtual environment. In this case, index.html gets mounted to 
+# the root folder of the alpine nginx server so that any changes you make locally will be reflected in the container.
+# This is useful for development and testing purposes.
+# The -v flag is used to specify the volume to mount.
+# The format for the -v flag is: -v <host_path>:<container_path>
+
+# Single file mount 
+docker run -p 8080:80 -v ${PWD}/index.html:/usr/share/nginx/html/index.html nginx:alpine  
+
+# Mount the entire current directory
+docker run -p 8080:80 -v ${PWD}:/usr/share/nginx/html nginx:alpine
+
+# Using the full path (if the ${PWD} doesn't work)
+docker run -p 8080:80 -v "C:\Users\Quacky\Desktop\Coding\DevOps Learning\DevOps_Learning\docker-hello-world":/usr/share/nginx/html nginx:alpine
