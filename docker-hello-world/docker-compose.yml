@@ -1,0 +1,33 @@
+# Docker Compose version (optional but good practice)
+version: '3.8'
+
+# Define the services (containers) for your application
+services:
+  # Your main DevOps learning application
+  devops_container:
+    image: jeddidite/devops_learning_app:latest  # Specify the image to use
+    container_name: devops_container             # Set a custom container name
+    ports:
+      - "80:80"                                  # Map host port 80 to container port 80
+    networks:
+      - devops_network                           # Connect to our custom network
+
+  # First nginx test container
+  test_container_1:
+    image: nginx                                 # Use the official nginx image
+    container_name: test_container_1             # Set a custom container name
+    networks:
+      - devops_network                           # Connect to our custom network
+
+  # Second nginx test container  
+  test_container_2:
+    image: nginx                                 # Use the official nginx image
+    container_name: test_container_2             # Set a custom container name
+    networks:
+      - devops_network                           # Connect to our custom network
+
+# Define custom networks for container communication
+networks:
+  devops_network:
+    driver: bridge                               # Use bridge networking (default)
+    # Docker Compose will automatically create this network

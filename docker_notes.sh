@@ -59,6 +59,17 @@ docker run -d -v db:/app/data nginx # Run in detached mode
 docker volume ls # List all volumes
 docker volume inspect db # Inspect the 'db' volume
 
+# Removing a volume
+docker volume rm db # Remove the 'db' volume
+
+# Removing containers and images:
+docker ps -a # List all containers (including stopped ones) 
+docker rm -f devops_container test_container_1 test_container_2 # Stop and remove the containers
+
+# Removing a network:
+docker network ls # List all networks
+docker network rm devops_network # Remove the 'devops_network' network
+
 # Docker Networks:
 #Bridge vs host vs none. 
 #Bridge is the defualt network and it lets local containers talk to each other. 
