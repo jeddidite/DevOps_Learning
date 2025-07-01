@@ -77,3 +77,12 @@ awslocal ec2 authorize-security-group-ingress --group-id sg-1b95xxxxxxxxxxx --pr
 awslocal efs create-file-system --creation-token my-efs-token --performance-mode generalPurpose # Create EFS
 awslocal efs create-mount-target --file-system-id fs-12345678 --subnet-id subnet-12345678 --security-groups sg-1b95f0b65411ebc89 # Create mount targets 
 awslocal efs describe-file-systems --query "FileSystems[*].[FileSystemId,CreationToken]" --output table # Get filesystem ID after creation 
+
+# Lambda
+awslocal lambda create-function --function-name my-function --runtime python3.8 --role arn:aws:iam::123456789012:role/lambda-role --handler lambda_function.lambda_handler --zip-file fileb://function.zip # Create a Lambda function
+awslocal lambda list-functions # List all Lambda functions
+awslocal lambda invoke --function-name my-function output.txt # Invoke a Lambda function and save the output to a file
+awslocal lambda delete-function --function-name my-function # Delete a Lambda function
+awslocal lambda get-function --function-name my-function # Get details of a Lambda function
+awslocal lambda update-function-code --function-name my-function --zip-file fileb://function.zip # Update the code of a Lambda function
+awslocal lambda update-function-configuration --function-name my-function --runtime python3.8 --handler lambda_function.lambda_handler # Update the configuration
