@@ -1,36 +1,3 @@
-'''
-Question 11
-Given two lists names = ["Alice", "Bob", "Charlie"] and ages = [25, 30, 35], print each person's name and age together using a for loop.
-Question 12
-Create a password strength checker. A password is strong if it has 8 or more characters AND contains both letters and numbers. Test with the password "abc123xyz".
-Question 13
-Write a program that simulates rolling a dice. Keep rolling (use a while loop) until you get a 6, then print how many rolls it took. Use import random and random.randint(1, 6).
-Question 14
-Loop through the list ["apple", "banana", "cherry", "date"] and print only the fruits that have 5 or fewer letters.
-Question 15
-Create a multiplication table for the number 7 (7 x 1 = 7, 7 x 2 = 14, etc.) up to 7 x 10.
-Question 16
-Given the list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], create a new list that contains only the odd numbers using a for loop.
-Question 17
-Write a program that asks the user to guess a number between 1 and 10. Keep asking until they guess correctly (the correct number is 7). Count how many guesses it took.
-Question 18
-Loop through the numbers 1 to 100 and print:
-
-"Fizz" if the number is divisible by 3
-"Buzz" if the number is divisible by 5
-"FizzBuzz" if divisible by both 3 and 5
-The number itself otherwise
-
-Question 19
-Given the nested list [[1, 2, 3], [4, 5, 6], [7, 8, 9]], use nested loops to print all numbers in a single line separated by spaces.
-
-Question 20
-Create a simple calculator that keeps asking for two numbers and an operation (+, -, *, /) until the user enters "quit". Use a while loop and conditional statements to perform the correct operation.
-
-Question 21
-Write a program that asks for a number and prints whether it's even, odd, or zero.
-'''
-
 # Question 1 Write a program that asks for a number and prints whether it's even, odd, or zero.
 def question_1():
     print("please give a number. I will tell you if it is positive negative or zero\n")
@@ -117,4 +84,127 @@ def question_10():
         if i % 3 == 0 and i % 7 == 0:
             break
     print(f"{i} is divisable by both 3 and 7")
-question_10()
+
+# Question 11 Given two lists names = ["Alice", "Bob", "Charlie"] and ages = [25, 30, 35], print each person's name and age together using a for loop.
+def question_11():
+    names = ["Alice", "Bob", "Charlie"]
+    ages = [25, 30, 35]
+    print("")
+
+    for i, e in zip(names, ages):
+        print(f"{i} is {e} years old. (Solution using zip function)")
+    print("")
+
+    for i in range(len(names)):
+        print(f"{names[i]} is {ages[i]} years old (Solution using len + range function)")
+    print("")
+
+# **** Question 12 Create a password strength checker. A password is strong if it has 8 or more characters AND contains both letters and numbers. Test with the password "abc123xyz". NEED TO COME BACK TO THIS ONE 
+def question_12():
+    lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+                   'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+    uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+    # Custom special characters (you can modify this based on your needs)
+    special = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=',
+                    '{', '}', '[', ']', '|', '\\', ':', ';', '"', "'", '<', '>', ',', '.', 
+                    '?', '/', '`', '~']
+    weak_password = True
+
+    while weak_password == True:
+        password = str(input("Enter password\n"))
+        if len(password) <= 8: 
+            print("Your password must be greater than 8 characters. Please try again: \n")
+
+# Question 13 Write a program that simulates rolling a dice. Keep rolling (use a while loop) until you get a 6, then print how many rolls it took. Use import random and random.randint(1, 6).
+def questions_13():
+    import random 
+    dice = 0
+    dice_counter = 0
+    while dice != 6:
+        dice = random.randint(1, 6)
+        print(f"dice roll: {dice}")
+        dice_counter += 1
+    print(f"It took {dice_counter} rolls to to 6.")
+
+# Question 14 Loop through the list ["apple", "banana", "cherry", "date"] and print only the fruits that have 5 or fewer letters.
+def question_14():
+    fruits = ["apple", "banana", "cherry", "date"]
+    for i in fruits:
+        if len(i) <= 5:
+            print(i)
+
+# Question 15 Create a multiplication table for the number 7 (7 x 1 = 7, 7 x 2 = 14, etc.) up to 7 x 10.
+def question_15(num):
+    for i in range(11):
+        print(f"{num} x {i} = {num * i}")
+
+# Question 16 Given the list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], create a new list that contains only the odd numbers using a for loop.
+def question_16():
+    mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    new_list = []
+    for i in mylist:
+        if i % 2 == 1:
+            new_list.append(i)
+    print(new_list)
+
+# Question 17 Write a program that asks the user to guess a number between 1 and 10. Keep asking until they guess correctly (the correct number is 7). Count how many guesses it took.
+def question_17():
+    import random
+    victory = random.randint(1, 10)
+    guesses = 1
+    while True: 
+        your_guess = int(input("Guess a number between 1 and 10, \n"))
+        if your_guess != victory:
+            print("That is not the correct number. Try again")
+            guesses += 1
+        else:
+            print(f"You guessed the correct number in {guesses} guesses")
+            break
+
+# Question 18 Loop through the numbers 1 to 100 and print: "Fizz" if the number is divisible by 3 "Buzz" if the number is divisible by 5 "FizzBuzz" if divisible by both 3 and 5 The number itself otherwise
+def question_18(num):
+    for i in range (1, num):
+        if i % 3 == 0 and i % 5 == 0:
+            print(f"{i} Fizzbuzz")
+        elif i % 3 == 0:
+            print(f"{i} Fizz")
+        elif i % 5 == 0:
+            print(f"{i} Buzz")
+        else: 
+            print(i)
+
+# **** Question 19 Given the nested list [[1, 2, 3], [4, 5, 6], [7, 8, 9]], use nested loops to print all numbers in a single line separated by spaces.
+def question_19():
+    nested_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    empty_list = []
+    for i in nested_list:
+        for z in i:
+            empty_list.append(z)
+    print(*empty_list)
+
+# Question 20 Create a simple calculator that keeps asking for two numbers and an operation (+, -, *, /) until the user enters "quit". Use a while loop and conditional statements to perform the correct operation.
+
+while True:
+    print("Type 'quit' to quit\n")
+    operator = str(input( " Please input an opperator (+, -, *, /) or type 'quit' to quit." ))
+    if operator == "quit":
+        break
+    num1 = int(input( "Number 1" ))
+    num2 = int(input( "Number 2" ))
+    if operator == "*":
+        print(num1 * num2)
+    elif operator == "-":
+        print(num1 - num2)
+    elif operator == "+":
+        print(num1 + num2)
+    elif operator == "/":  
+        print(num1 / num2)
+    else: 
+        print("No operater selected. Resetting")
+
+# Question 21 Write a program that asks for a number and prints whether it's positive, negative, or zero.
